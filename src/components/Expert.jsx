@@ -6,7 +6,7 @@ import { EXPERT } from '../data/content.js';
 export default function Expert() {
   return (
     <section id="expert" className="px-5 py-20 sm:px-8 md:px-12 md:py-32">
-      <SectionHeader index="03" eyebrow="Хто дивиться на ваш облік" title="Про мене" />
+      <SectionHeader index="05" eyebrow="Хто дивиться на ваш облік" title="Про мене" />
 
       <div className="mt-12 grid gap-12 md:mt-20 md:grid-cols-2 md:gap-16">
         <motion.div className="flex flex-col gap-6" variants={fadeUp} {...inView}>

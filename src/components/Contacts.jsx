@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight, AtSign, Clock, Mail, MapPin, Phone } from 'lucide-react';
+import { ArrowUpRight, AtSign, Globe, Mail, Phone } from 'lucide-react';
 import { fadeUp, inView } from '../motion.js';
 import { AUDIT_URL, CONTACTS } from '../data/content.js';
 
@@ -21,8 +21,7 @@ export default function Contacts() {
       label: CONTACTS.expertInstagram,
       href: `https://instagram.com/${CONTACTS.expertInstagram}`,
     },
-    { icon: MapPin, label: CONTACTS.address },
-    { icon: Clock, label: CONTACTS.hours },
+    { icon: Globe, label: CONTACTS.format },
   ].filter(Boolean);
 
   return (

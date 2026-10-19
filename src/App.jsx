@@ -1,8 +1,8 @@
 import HeroSection from './components/HeroSection.jsx';
 import Services from './components/Services.jsx';
 import Audit from './components/Audit.jsx';
+import Process from './components/Process.jsx';
 import Expert from './components/Expert.jsx';
-import Clients from './components/Clients.jsx';
 import Contacts from './components/Contacts.jsx';
 
 export default function App() {
@@ -12,8 +12,8 @@ export default function App() {
       <main>
         <Services />
         <Audit />
+        <Process />
         <Expert />
-        <Clients />
       </main>
       <Contacts />
     </div>
