@@ -13,7 +13,7 @@ export default function Services() {
         {SERVICE_GROUPS.map((group) => (
           <div key={group.title}>
             <motion.h3
-              className="border-b-2 border-black pb-4 text-sm font-semibold uppercase tracking-widest md:text-base"
+              className="border-b-2 border-brand pb-4 text-sm font-bold uppercase tracking-widest text-ink md:text-base"
               variants={fadeUp}
               {...inView}
             >
@@ -21,22 +21,15 @@ export default function Services() {
             </motion.h3>
             <ul>
               {group.items.map((item, i) => (
-                <motion.li
-                  key={item}
-                  variants={fadeUp}
-                  custom={i * 0.4}
-                  {...inView}
-                >
+                <motion.li key={item} variants={fadeUp} custom={i * 0.4} {...inView}>
                   <a
                     href="#contacts"
-                    className="group flex items-center gap-4 border-b border-black/15 py-4 transition-colors hover:text-accent"
+                    className="group flex items-center gap-4 border-b border-line py-4 text-ink transition-colors hover:text-brand-dark"
                   >
-                    <span className="w-6 shrink-0 text-xs font-semibold tracking-widest text-accent">
+                    <span className="w-6 shrink-0 text-xs font-semibold tracking-widest text-stone">
                       {String(i + 1).padStart(2, '0')}
                     </span>
-                    <span className="flex-1 text-xs font-semibold uppercase tracking-wide sm:text-sm">
-                      {item}
-                    </span>
+                    <span className="flex-1 text-sm font-medium">{item}</span>
                     <ArrowUpRight
                       size={18}
                       className="shrink-0 -translate-x-1 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100"

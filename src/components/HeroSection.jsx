@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight, X } from 'lucide-react';
 import Logo from './Logo.jsx';
 import { EASE, fadeDown, fadeUp } from '../motion.js';
-import { HEADING_WORDS, NAV_LINKS, STATS, VIDEO_URL } from '../data/content.js';
+import { AUDIT_URL, HEADING_WORDS, NAV_LINKS, STATS } from '../data/content.js';
 
 function MobileMenu({ open, onClose }) {
   useEffect(() => {
@@ -36,7 +36,7 @@ function MobileMenu({ open, onClose }) {
               type="button"
               onClick={onClose}
               aria-label="Закрити меню"
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-black text-white"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-ink text-white"
             >
               <X size={18} />
             </button>
@@ -48,7 +48,7 @@ function MobileMenu({ open, onClose }) {
                 key={link.href}
                 href={link.href}
                 onClick={onClose}
-                className="text-3xl font-semibold uppercase tracking-widest text-black transition-colors hover:text-accent"
+                className="text-3xl font-semibold uppercase tracking-widest text-ink transition-colors hover:text-brand-dark"
                 variants={fadeUp}
                 initial="hidden"
                 animate="visible"
@@ -60,11 +60,11 @@ function MobileMenu({ open, onClose }) {
           </nav>
 
           <a
-            href="#contacts"
+            href={AUDIT_URL}
             onClick={onClose}
-            className="mt-auto flex items-center gap-2 text-xl font-semibold uppercase tracking-wide text-accent"
+            className="mt-auto flex items-center gap-2 text-xl font-semibold uppercase tracking-wide text-brand-dark"
           >
-            Отримати консультацію
+            Аудит фінансової безпеки
             <ArrowUpRight size={22} />
           </a>
         </motion.div>
@@ -78,16 +78,32 @@ export default function HeroSection() {
   const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   return (
-    <section id="top" className="relative flex min-h-screen flex-col overflow-hidden text-black">
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        src={VIDEO_URL}
-        autoPlay
-        loop
-        muted
-        playsInline
-        aria-hidden="true"
-      />
+    <section id="top" className="relative flex min-h-screen flex-col overflow-hidden text-ink">
+      {/* Фірмова геометрія: контурне бірюзове коло і тонка лінія */}
+      <div className="pointer-events-none absolute inset-0 bg-mist" aria-hidden="true">
+        <svg
+          className="absolute -left-[30vmax] top-1/2 h-[90vmax] w-[90vmax] -translate-y-1/2 md:-left-[12vmax]"
+          viewBox="0 0 100 100"
+          fill="none"
+        >
+          <motion.circle
+            cx="50"
+            cy="50"
+            r="49"
+            stroke="#73EBDF"
+            strokeWidth="0.6"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1.8, ease: EASE }}
+          />
+        </svg>
+        <motion.div
+          className="absolute left-0 top-[72px] h-px bg-brand md:top-[84px]"
+          initial={{ width: 0 }}
+          animate={{ width: '100%' }}
+          transition={{ delay: 0.3, duration: 1.4, ease: EASE }}
+        />
+      </div>
 
       <div className="relative z-10 flex min-h-screen flex-col">
         {/* Nav */}
@@ -101,7 +117,7 @@ export default function HeroSection() {
               <motion.a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-semibold uppercase tracking-widest text-black transition-colors hover:text-accent"
+                className="text-sm font-semibold uppercase tracking-widest text-ink transition-colors hover:text-brand-dark"
                 variants={fadeDown}
                 initial="hidden"
                 animate="visible"
@@ -116,7 +132,7 @@ export default function HeroSection() {
             type="button"
             onClick={() => setMenuOpen(true)}
             aria-label="Відкрити меню"
-            className="flex h-9 w-9 flex-col items-center justify-center gap-1 rounded-full bg-black"
+            className="flex h-9 w-9 flex-col items-center justify-center gap-1 rounded-full bg-ink"
             variants={fadeDown}
             initial="hidden"
             animate="visible"
@@ -144,7 +160,7 @@ export default function HeroSection() {
                   className="flex items-start leading-none"
                   style={{ fontSize: 'clamp(1.5rem, 5vw, 3.5rem)', fontWeight: 600 }}
                 >
-                  <span className="text-accent" style={{ fontSize: '0.5em' }}>
+                  <span className="text-brand-dark" style={{ fontSize: '0.5em' }}>
                     +
                   </span>
                   <span>{stat.value}</span>
@@ -168,44 +184,46 @@ export default function HeroSection() {
               animate="visible"
               custom={5}
             >
-              Бухгалтерія
+              Незалежний погляд
               <br />
-              Право і кадри
+              на ваш облік
               <br />
-              Для вашого бізнесу
+              <span className="font-script text-base normal-case tracking-normal text-brand-dark sm:text-lg md:text-2xl">
+                друга пара очей
+              </span>
             </motion.p>
 
             <motion.a
-              href="#contacts"
-              className="flex items-center gap-1.5 whitespace-nowrap text-base uppercase tracking-wide text-accent sm:text-xl md:text-2xl"
+              href={AUDIT_URL}
+              className="flex items-center gap-1.5 whitespace-nowrap text-base uppercase tracking-wide text-brand-dark sm:text-xl md:text-2xl"
               style={{ fontWeight: 600 }}
               variants={fadeUp}
               initial="hidden"
               animate="visible"
               custom={6}
             >
-              Консультація
+              Замовити аудит
               <ArrowUpRight className="h-[18px] w-[18px] sm:h-[22px] sm:w-[22px]" />
             </motion.a>
           </div>
 
           {/* Row B */}
-          <div className="flex items-end justify-between gap-3 sm:gap-4">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between sm:gap-4">
             <motion.div
-              className="w-[120px] shrink-0 sm:w-[180px] md:w-[280px]"
+              className="max-w-[220px] shrink-0 sm:w-[180px] sm:max-w-none md:w-[280px]"
               variants={fadeUp}
               initial="hidden"
               animate="visible"
               custom={7}
             >
-              <p className="text-left text-[9px] font-semibold uppercase tracking-widest sm:text-xs md:text-right md:text-sm">
-                Аутсорсинг бухгалтерії та юридичного супроводу для ФОП, ТОВ, ПП, ГО та ОСББ
+              <p className="text-left text-[10px] font-semibold uppercase tracking-widest sm:text-xs md:text-right md:text-sm">
+                Знаходжу податкові ризики у вашому обліку раніше, ніж їх знайде податкова
               </p>
             </motion.div>
 
             <h1
-              className="text-right uppercase text-black"
-              style={{ fontSize: 'clamp(2rem, 9vw, 9rem)', lineHeight: 0.88, fontWeight: 600 }}
+              className="self-end text-right uppercase text-ink"
+              style={{ fontSize: 'clamp(2.25rem, 6.6vw, 8.5rem)', lineHeight: 0.9, fontWeight: 800 }}
             >
               {HEADING_WORDS.map((word, i) => (
                 <span key={word} className="block overflow-hidden">
