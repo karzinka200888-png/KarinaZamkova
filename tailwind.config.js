@@ -4,6 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Брендовий колір — змінюється тут для всього сайту
         accent: '#5E0ED7',
       },
       fontFamily: {

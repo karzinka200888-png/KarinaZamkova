@@ -1,51 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight, X } from 'lucide-react';
-
-const VIDEO_URL =
-  'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260517_222138_3e3205be-3364-417b-a64a-bfe087acbec4.mp4';
-
-const ACCENT = '#5E0ED7';
-const EASE = [0.22, 1, 0.36, 1];
-
-const NAV_LINKS = ['Story', 'Expertise', 'Studios', 'Feedback'];
-
-const STATS = [
-  { value: '300', label: 'Crafted\nBrands' },
-  { value: '200', label: 'Digital\nProducts' },
-  { value: '100', label: 'Ventures\nFunded' },
-];
-
-const HEADING_WORDS = ['Fearless', 'Vision', 'Delivered'];
-
-const fadeDown = {
-  hidden: { opacity: 0, y: -20 },
-  visible: (i = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.1, duration: 0.5, ease: EASE },
-  }),
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 32 },
-  visible: (i = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.12, duration: 0.6, ease: EASE },
-  }),
-};
-
-function Logo() {
-  return (
-    <div
-      className="flex h-8 w-8 items-center justify-center rounded-full border-2"
-      style={{ borderColor: ACCENT }}
-    >
-      <div className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: ACCENT }} />
-    </div>
-  );
-}
+import Logo from './Logo.jsx';
+import { EASE, fadeDown, fadeUp } from '../motion.js';
+import { HEADING_WORDS, NAV_LINKS, STATS, VIDEO_URL } from '../data/content.js';
 
 function MobileMenu({ open, onClose }) {
   useEffect(() => {
@@ -70,14 +28,14 @@ function MobileMenu({ open, onClose }) {
           transition={{ duration: 0.3, ease: EASE }}
           role="dialog"
           aria-modal="true"
-          aria-label="Menu"
+          aria-label="Меню"
         >
           <div className="flex items-center justify-between">
             <Logo />
             <button
               type="button"
               onClick={onClose}
-              aria-label="Close menu"
+              aria-label="Закрити меню"
               className="flex h-9 w-9 items-center justify-center rounded-full bg-black text-white"
             >
               <X size={18} />
@@ -87,27 +45,26 @@ function MobileMenu({ open, onClose }) {
           <nav className="mt-16 flex flex-col gap-8">
             {NAV_LINKS.map((link, i) => (
               <motion.a
-                key={link}
-                href={`#${link.toLowerCase()}`}
+                key={link.href}
+                href={link.href}
                 onClick={onClose}
-                className="text-3xl font-semibold uppercase tracking-widest text-black"
+                className="text-3xl font-semibold uppercase tracking-widest text-black transition-colors hover:text-accent"
                 variants={fadeUp}
                 initial="hidden"
                 animate="visible"
                 custom={i + 1}
               >
-                {link}
+                {link.label}
               </motion.a>
             ))}
           </nav>
 
           <a
-            href="#contact"
+            href="#contacts"
             onClick={onClose}
-            className="mt-auto flex items-center gap-2 text-xl font-semibold uppercase tracking-wide"
-            style={{ color: ACCENT }}
+            className="mt-auto flex items-center gap-2 text-xl font-semibold uppercase tracking-wide text-accent"
           >
-            Work With Us
+            Отримати консультацію
             <ArrowUpRight size={22} />
           </a>
         </motion.div>
@@ -118,12 +75,10 @@ function MobileMenu({ open, onClose }) {
 
 export default function HeroSection() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   return (
-    <div
-      className="relative flex min-h-screen flex-col overflow-hidden text-black"
-      style={{ fontFamily: "'Inter', sans-serif" }}
-    >
+    <section id="top" className="relative flex min-h-screen flex-col overflow-hidden text-black">
       <video
         className="absolute inset-0 h-full w-full object-cover"
         src={VIDEO_URL}
@@ -144,15 +99,15 @@ export default function HeroSection() {
           <div className="hidden items-center gap-10 md:flex">
             {NAV_LINKS.map((link, i) => (
               <motion.a
-                key={link}
-                href={`#${link.toLowerCase()}`}
-                className="text-sm font-semibold uppercase tracking-widest text-black"
+                key={link.href}
+                href={link.href}
+                className="text-sm font-semibold uppercase tracking-widest text-black transition-colors hover:text-accent"
                 variants={fadeDown}
                 initial="hidden"
                 animate="visible"
                 custom={i + 1}
               >
-                {link}
+                {link.label}
               </motion.a>
             ))}
           </div>
@@ -160,7 +115,7 @@ export default function HeroSection() {
           <motion.button
             type="button"
             onClick={() => setMenuOpen(true)}
-            aria-label="Open menu"
+            aria-label="Відкрити меню"
             className="flex h-9 w-9 flex-col items-center justify-center gap-1 rounded-full bg-black"
             variants={fadeDown}
             initial="hidden"
@@ -178,7 +133,7 @@ export default function HeroSection() {
           <div className="flex gap-5 sm:gap-8 md:gap-10">
             {STATS.map((stat, i) => (
               <motion.div
-                key={stat.value}
+                key={stat.label}
                 className="flex flex-col items-end text-right"
                 variants={fadeUp}
                 initial="hidden"
@@ -189,7 +144,9 @@ export default function HeroSection() {
                   className="flex items-start leading-none"
                   style={{ fontSize: 'clamp(1.5rem, 5vw, 3.5rem)', fontWeight: 600 }}
                 >
-                  <span style={{ color: ACCENT, fontSize: '0.5em' }}>+</span>
+                  <span className="text-accent" style={{ fontSize: '0.5em' }}>
+                    +
+                  </span>
                   <span>{stat.value}</span>
                 </div>
                 <p className="mt-1 whitespace-pre-line text-[10px] font-semibold uppercase leading-tight tracking-widest sm:text-xs md:text-sm">
@@ -211,23 +168,23 @@ export default function HeroSection() {
               animate="visible"
               custom={5}
             >
-              Shaping Bold
+              Бухгалтерія
               <br />
-              Visions Into Power
+              Право і кадри
               <br />
-              For Your Tribe
+              Для вашого бізнесу
             </motion.p>
 
             <motion.a
-              href="#contact"
-              className="flex items-center gap-1.5 whitespace-nowrap text-base uppercase tracking-wide sm:text-xl md:text-2xl"
-              style={{ color: ACCENT, fontWeight: 600 }}
+              href="#contacts"
+              className="flex items-center gap-1.5 whitespace-nowrap text-base uppercase tracking-wide text-accent sm:text-xl md:text-2xl"
+              style={{ fontWeight: 600 }}
               variants={fadeUp}
               initial="hidden"
               animate="visible"
               custom={6}
             >
-              Work With Us
+              Консультація
               <ArrowUpRight className="h-[18px] w-[18px] sm:h-[22px] sm:w-[22px]" />
             </motion.a>
           </div>
@@ -242,7 +199,7 @@ export default function HeroSection() {
               custom={7}
             >
               <p className="text-left text-[9px] font-semibold uppercase tracking-widest sm:text-xs md:text-right md:text-sm">
-                Creative Studios Built Around Elevating Your Vision Into Striking Reality
+                Аутсорсинг бухгалтерії та юридичного супроводу для ФОП, ТОВ, ПП, ГО та ОСББ
               </p>
             </motion.div>
 
@@ -267,7 +224,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
-    </div>
+      <MobileMenu open={menuOpen} onClose={closeMenu} />
+    </section>
   );
 }
