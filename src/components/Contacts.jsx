@@ -1,14 +1,19 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight, AtSign, Globe, Mail, Phone } from 'lucide-react';
+import { ArrowUpRight, AtSign, Clock, Mail, MapPin, Phone, Send } from 'lucide-react';
 import { fadeUp, inView } from '../motion.js';
-import { AUDIT_URL, CONTACTS } from '../data/content.js';
+import { CONTACTS } from '../data/content.js';
 
 export default function Contacts() {
   const rows = [
-    CONTACTS.phone && {
+    ...CONTACTS.phones.map((phone) => ({
       icon: Phone,
-      label: CONTACTS.phone,
-      href: `tel:${CONTACTS.phone.replace(/[^\d+]/g, '')}`,
+      label: phone,
+      href: `tel:${phone.replace(/[^\d+]/g, '')}`,
+    })),
+    CONTACTS.telegram && {
+      icon: Send,
+      label: 'Telegram',
+      href: `https://t.me/${CONTACTS.telegram}`,
     },
     CONTACTS.email && { icon: Mail, label: CONTACTS.email, href: `mailto:${CONTACTS.email}` },
     {
@@ -16,12 +21,8 @@ export default function Contacts() {
       label: CONTACTS.instagram,
       href: `https://instagram.com/${CONTACTS.instagram}`,
     },
-    {
-      icon: AtSign,
-      label: CONTACTS.expertInstagram,
-      href: `https://instagram.com/${CONTACTS.expertInstagram}`,
-    },
-    { icon: Globe, label: CONTACTS.format },
+    { icon: Clock, label: CONTACTS.hours },
+    { icon: MapPin, label: CONTACTS.city },
   ].filter(Boolean);
 
   return (
@@ -40,7 +41,7 @@ export default function Contacts() {
         variants={fadeUp}
         {...inView}
       >
-        <span className="text-brand-dark">06</span> / Контакти
+        <span className="text-brand-dark">07</span> / Контакти
       </motion.p>
 
       <motion.h2
@@ -76,20 +77,20 @@ export default function Contacts() {
         </ul>
 
         <motion.a
-          href={AUDIT_URL}
+          href={`https://t.me/${CONTACTS.telegram}`}
           className="flex items-center gap-2 self-start whitespace-nowrap rounded-full bg-brand px-7 py-4 text-sm font-semibold uppercase tracking-widest text-ink transition-transform hover:scale-105 md:self-auto md:text-base"
           variants={fadeUp}
           custom={3}
           {...inView}
         >
-          Замовити аудит
+          Написати в Telegram
           <ArrowUpRight size={20} />
         </motion.a>
       </div>
 
       <div className="relative mt-20 flex flex-col gap-2 border-t border-line pt-6 text-[10px] font-semibold uppercase tracking-widest text-stone sm:flex-row sm:justify-between sm:text-xs">
         <span>© {new Date().getFullYear()} OUTSISTENT</span>
-        <span>Карина Замкова · податковий консультант</span>
+        <span>Бухгалтерський супровід ФОП і ТОВ</span>
       </div>
     </footer>
   );

@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight, X } from 'lucide-react';
 import Logo from './Logo.jsx';
 import { EASE, fadeDown, fadeUp } from '../motion.js';
-import { AUDIT_URL, HEADING_WORDS, NAV_LINKS, STATS } from '../data/content.js';
+import { HEADING_WORDS, NAV_LINKS, STATS } from '../data/content.js';
 
 function MobileMenu({ open, onClose }) {
   useEffect(() => {
@@ -60,11 +60,11 @@ function MobileMenu({ open, onClose }) {
           </nav>
 
           <a
-            href={AUDIT_URL}
+            href="#calculator"
             onClick={onClose}
             className="mt-auto flex items-center gap-2 text-xl font-semibold uppercase tracking-wide text-brand-dark"
           >
-            Аудит фінансової безпеки
+            Розрахувати вартість
             <ArrowUpRight size={22} />
           </a>
         </motion.div>
@@ -184,17 +184,17 @@ export default function HeroSection() {
               animate="visible"
               custom={5}
             >
-              Незалежний погляд
+              Бухгалтерський супровід
               <br />
-              на ваш облік
+              ФОП і ТОВ
               <br />
               <span className="font-script text-base normal-case tracking-normal text-brand-dark sm:text-lg md:text-2xl">
-                друга пара очей
+                без сюрпризів
               </span>
             </motion.p>
 
             <motion.a
-              href={AUDIT_URL}
+              href="#calculator"
               className="flex items-center gap-1.5 whitespace-nowrap text-base uppercase tracking-wide text-brand-dark sm:text-xl md:text-2xl"
               style={{ fontWeight: 600 }}
               variants={fadeUp}
@@ -202,7 +202,7 @@ export default function HeroSection() {
               animate="visible"
               custom={6}
             >
-              Замовити аудит
+              Розрахувати
               <ArrowUpRight className="h-[18px] w-[18px] sm:h-[22px] sm:w-[22px]" />
             </motion.a>
           </div>
@@ -217,7 +217,7 @@ export default function HeroSection() {
               custom={7}
             >
               <p className="text-left text-[10px] font-semibold uppercase tracking-widest sm:text-xs md:text-right md:text-sm">
-                Знаходжу податкові ризики у вашому обліку раніше, ніж їх знайде податкова
+                Ведемо облік, податки і звітність щомісяця — ви займаєтесь бізнесом
               </p>
             </motion.div>
 

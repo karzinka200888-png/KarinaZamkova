@@ -5,8 +5,8 @@ import { EXPERT } from '../data/content.js';
 
 export default function Expert() {
   return (
-    <section id="expert" className="px-5 py-20 sm:px-8 md:px-12 md:py-32">
-      <SectionHeader index="05" eyebrow="Хто дивиться на ваш облік" title="Про мене" />
+    <section id="expert" className="bg-mist px-5 py-20 sm:px-8 md:px-12 md:py-32">
+      <SectionHeader index="06" eyebrow="Хто веде ваш облік" title="Про нас" />
 
       <div className="mt-12 grid gap-12 md:mt-20 md:grid-cols-2 md:gap-16">
         <motion.div className="flex flex-col gap-6" variants={fadeUp} {...inView}>
@@ -21,7 +21,7 @@ export default function Expert() {
               {p}
             </p>
           ))}
-          <p className="font-script text-2xl text-brand-dark md:text-3xl">без паніки — з планом</p>
+          <p className="font-script text-2xl text-brand-dark md:text-3xl">складне — простою мовою</p>
           <p className="border-l-2 border-brand pl-4 text-sm font-medium text-stone">{EXPERT.book}</p>
         </motion.div>
 

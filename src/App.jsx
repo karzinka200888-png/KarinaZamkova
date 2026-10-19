@@ -1,7 +1,9 @@
 import HeroSection from './components/HeroSection.jsx';
 import Services from './components/Services.jsx';
-import Audit from './components/Audit.jsx';
-import Process from './components/Process.jsx';
+import Pricing from './components/Pricing.jsx';
+import Calculator from './components/Calculator.jsx';
+import OneOff from './components/OneOff.jsx';
+import HowWeWork from './components/HowWeWork.jsx';
 import Expert from './components/Expert.jsx';
 import Contacts from './components/Contacts.jsx';
 
@@ -11,8 +13,10 @@ export default function App() {
       <HeroSection />
       <main>
         <Services />
-        <Audit />
-        <Process />
+        <Pricing />
+        <Calculator />
+        <OneOff />
+        <HowWeWork />
         <Expert />
       </main>
       <Contacts />
