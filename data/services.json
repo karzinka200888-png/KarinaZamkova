@@ -1612,5 +1612,15 @@
       "Підакцизні товари (алкоголь)",
       "HoReCa"
     ]
+  },
+  "contacts": {
+    "phones": [
+      "+380 99 558 85 00",
+      "+380 96 558 85 00"
+    ],
+    "phonesConfirmed": true,
+    "email": "info@outsistent.com.ua",
+    "hours": "Пн–Пт 9:00–18:00",
+    "telegram": "TODO: t.me/outsistentZP чи за номером 099"
   }
 }
