@@ -35,9 +35,9 @@ out.push(`| Загальна система | ${fmt(pr.base.general_noVat)} | ${
 out.push('', '**Коефіцієнти до бази (множаться):** виробництво ×1,3 · роздріб/маркетплейси з ПРРО ×1,3 · ЗЕД ×1,5.');
 out.push(`Не беремо: ${pr.notAccepted.join('; ')}.`);
 if (pr.contractExample?.todo) out.push('', `**TODO:** ${pr.contractExample.todo}`);
-out.push('', '**Доплати за показниками місяця:**', '', '| Показник | Обсяг | Ціна |', '|---|---|---:|');
+out.push('', '**Доплати за показниками місяця** (⚠️ — продовження кроку договору, чекає підтвердження):', '', '| Показник | Обсяг | Ціна |', '|---|---|---:|');
 for (const a of Object.values(tov.addons)) {
-  if (a.tiers) for (const t of a.tiers) out.push(`| ${a.label} | ${t.label ?? `до ${t.upTo}`} | ${t.price === 'TODO' ? '**TODO**' : fmt(t.price)} |`);
+  if (a.tiers) for (const t of a.tiers) out.push(`| ${a.label} | ${t.label ?? `до ${t.upTo}`} | ${t.priceType === 'individual' ? 'індивідуально' : t.price === 'TODO' ? '**TODO**' : t.perUnitAbove ? `+${fmt(t.perUnitAbove)} за пакет` : fmt(t.price)}${t.extrapolated ? ' ⚠️' : ''} |`);
   if (a.perUnit) out.push(`| ${a.label} | за 1 шт. | ${fmt(a.perUnit)} |`);
   if (a.price) out.push(`| ${a.label} | ${a.unit} | ${fmt(a.price)} |`);
 }

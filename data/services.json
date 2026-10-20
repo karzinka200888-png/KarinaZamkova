@@ -333,9 +333,22 @@
               "label": "101–150"
             },
             {
+              "upTo": 200,
+              "price": 9000,
+              "label": "151–200",
+              "extrapolated": true
+            },
+            {
+              "upTo": 250,
+              "price": 11000,
+              "label": "201–250",
+              "extrapolated": true
+            },
+            {
               "upTo": null,
-              "price": "TODO",
-              "label": "понад 150"
+              "price": null,
+              "priceType": "individual",
+              "label": "понад 250"
             }
           ],
           "note": "Рішення власниці: до 50 операцій входять у базу (у договорі «до 50 — 3 000» окремо)."
@@ -363,9 +376,25 @@
               "price": 2500
             },
             {
+              "upTo": 30,
+              "price": 3500,
+              "extrapolated": true
+            },
+            {
+              "upTo": 40,
+              "price": 4500,
+              "extrapolated": true
+            },
+            {
+              "upTo": 50,
+              "price": 5500,
+              "extrapolated": true
+            },
+            {
               "upTo": null,
-              "price": "TODO",
-              "label": "понад 20"
+              "price": null,
+              "priceType": "individual",
+              "label": "понад 50"
             }
           ]
         },
@@ -387,9 +416,25 @@
               "price": 1600
             },
             {
+              "upTo": 30,
+              "price": 2300,
+              "extrapolated": true
+            },
+            {
+              "upTo": 40,
+              "price": 3000,
+              "extrapolated": true
+            },
+            {
+              "upTo": 50,
+              "price": 3700,
+              "extrapolated": true
+            },
+            {
               "upTo": null,
-              "price": "TODO",
-              "label": "понад 20"
+              "price": null,
+              "priceType": "individual",
+              "label": "понад 50"
             }
           ]
         },
@@ -401,9 +446,21 @@
             {
               "upTo": 10,
               "price": 3500
+            },
+            {
+              "upTo": 30,
+              "price": null,
+              "perUnitAbove": 500,
+              "extrapolated": true
+            },
+            {
+              "upTo": null,
+              "price": null,
+              "priceType": "individual",
+              "label": "понад 30"
             }
           ],
-          "todo": "понад 10 пакетів — по 500 за кожен?"
+          "rule": "до 10 пакетів — 3 500; далі по 500 за пакет до 30; понад 30 — індивідуально"
         },
         "paymentOrders": {
           "label": "Платіжні доручення в клієнт-банку",
@@ -423,9 +480,45 @@
               "price": 2000
             },
             {
+              "upTo": 40,
+              "price": 2500,
+              "extrapolated": true
+            },
+            {
+              "upTo": 50,
+              "price": 3000,
+              "extrapolated": true
+            },
+            {
+              "upTo": 60,
+              "price": 3500,
+              "extrapolated": true
+            },
+            {
+              "upTo": 70,
+              "price": 4000,
+              "extrapolated": true
+            },
+            {
+              "upTo": 80,
+              "price": 4500,
+              "extrapolated": true
+            },
+            {
+              "upTo": 90,
+              "price": 5000,
+              "extrapolated": true
+            },
+            {
+              "upTo": 100,
+              "price": 5500,
+              "extrapolated": true
+            },
+            {
               "upTo": null,
-              "price": "TODO",
-              "label": "понад 30"
+              "price": null,
+              "priceType": "individual",
+              "label": "понад 100"
             }
           ]
         },
@@ -449,7 +542,8 @@
           "unit": "база / місяць",
           "price": 500
         }
-      }
+      },
+      "calculatorLimits": "Калькулятор рахує до 250 операцій і 100 платіжок; понад — «індивідуально». Рядки з extrapolated=true продовжують крок договору — чекають підтвердження власниці."
     }
   },
   "oneOff": {
