@@ -13,6 +13,7 @@ export const CONTACTS = {
 // Шлях до файлу логотипа OS (напр. '/logo-os.svg' у папці public). Поки порожньо — показується назва.
 export const LOGO_SRC = '/brand/logo-os.png';
 export const WORDMARK_SRC = '/brand/wordmark.png';
+export const LOCKUP_SRC = '/brand/wordmark-caption.png';
 
 export const NAV_LINKS = [
   { label: 'Послуги', href: '#services' },

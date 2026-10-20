@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight, AtSign, Clock, Mail, MapPin, Phone, Send } from 'lucide-react';
 import { fadeUp, inView } from '../motion.js';
-import { CONTACTS } from '../data/content.js';
+import { CONTACTS, LOCKUP_SRC, LOGO_SRC } from '../data/content.js';
 
 export default function Contacts() {
   const rows = [
@@ -88,7 +88,12 @@ export default function Contacts() {
         </motion.a>
       </div>
 
-      <div className="relative mt-20 flex flex-col gap-2 border-t border-line pt-6 text-[10px] font-semibold uppercase tracking-widest text-stone sm:flex-row sm:justify-between sm:text-xs">
+      <div className="relative mt-20 flex items-center gap-4">
+        <img src={LOGO_SRC} alt="" className="h-14 w-auto" width="80" height="56" />
+        <img src={LOCKUP_SRC} alt="OUTSISTENT — аутсорсингова компанія" className="h-14 w-auto" width="174" height="56" />
+      </div>
+
+      <div className="relative mt-8 flex flex-col gap-2 border-t border-line pt-6 text-[10px] font-semibold uppercase tracking-widest text-stone sm:flex-row sm:justify-between sm:text-xs">
         <span>© {new Date().getFullYear()} OUTSISTENT</span>
         <span>Бухгалтерський супровід ФОП і ТОВ</span>
       </div>
