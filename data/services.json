@@ -1603,6 +1603,11 @@
       "wordmark": "public/brand/wordmark.png",
       "note": "З оригіналу власниці. Підпис «аутсорсингова компанія» лишаємо (рішення власниці): у шапці — текстом під написом, у футері — повний лого. Знак не перемальовано. Бажано SVG від дизайнера.",
       "lockup": "public/brand/wordmark-caption.png"
+    },
+    "photos": {
+      "about": "public/photos/karina-portrait.webp",
+      "process": "public/photos/karina-at-work.webp",
+      "status": "Попередній вибір — чекає підтвердження власниці (брендбук: лише реальні фото, без AI-обробки, що змінює зовнішність)."
     }
   },
   "clients": {
