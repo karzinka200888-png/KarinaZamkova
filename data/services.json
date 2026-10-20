@@ -1612,6 +1612,14 @@
         "public/photos/karina-bookstore.webp"
       ],
       "status": "Справжні фото (власниця надіслала). Вибір фото по блоках можна змінити."
+    },
+    "leadDelivery": {
+      "channels": [
+        "telegram-bot",
+        "email"
+      ],
+      "email": "info@outsistent.com.ua",
+      "todo": "Створити Telegram-бота (токен, chat id) і SMTP/сервіс відправки email — на етапі форми."
     }
   },
   "clients": {
