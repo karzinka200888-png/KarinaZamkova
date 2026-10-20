@@ -1606,8 +1606,12 @@
     },
     "photos": {
       "about": "public/photos/karina-portrait.webp",
-      "process": "public/photos/karina-at-work.webp",
-      "status": "Попередній вибір — чекає підтвердження власниці (брендбук: лише реальні фото, без AI-обробки, що змінює зовнішність)."
+      "online": "public/photos/karina-online-terrace.webp",
+      "spare": [
+        "public/photos/karina-at-work.webp",
+        "public/photos/karina-bookstore.webp"
+      ],
+      "status": "Справжні фото (власниця надіслала). Вибір фото по блоках можна змінити."
     }
   },
   "clients": {
