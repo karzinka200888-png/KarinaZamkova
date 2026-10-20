@@ -81,7 +81,11 @@
           },
           "note": "Переважно торгівля. Не беремо: підакцизні товари (алкоголь), HoReCa."
         },
-        "accountsMoreThan2": "TODO"
+        "accountsMoreThan2": {
+          "price": 500,
+          "unit": "кожен рахунок понад 2 / місяць",
+          "note": "Рішення власниці (жовтень 2026)."
+        }
       },
       "includes": [
         "Планування і контроль оплати податків",
@@ -157,18 +161,20 @@
           "tiers": [
             {
               "upTo": 50,
-              "price": 2000
-            },
-            {
-              "upTo": 100,
               "price": 3000
             },
             {
+              "upTo": 100,
+              "price": 5000
+            },
+            {
               "upTo": null,
-              "price": "TODO",
+              "price": null,
+              "priceType": "individual",
               "label": "понад 100 чеків"
             }
-          ]
+          ],
+          "note": "Нові ціни від власниці (у договорі було 2 000 / 3 000)."
         },
         "clientBank": {
           "label": "Пакет «Клієнт-банк»",
@@ -184,7 +190,8 @@
             },
             {
               "upTo": null,
-              "price": "TODO",
+              "price": null,
+              "priceType": "individual",
               "label": "понад 100 платіжок"
             }
           ]
@@ -203,7 +210,8 @@
             },
             {
               "upTo": null,
-              "price": "TODO",
+              "price": null,
+              "priceType": "individual",
               "label": "понад 30 пакетів"
             }
           ]
