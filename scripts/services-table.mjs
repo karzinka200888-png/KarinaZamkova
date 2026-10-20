@@ -27,7 +27,20 @@ for (const a of Object.values(fop.addons)) {
 }
 
 const tov = data.monthly.tov;
-out.push('', '## 2. Щомісячно: ТОВ', '', `**${tov.name}** (${tov.volume}) — **TODO**: ${tov.priceNote}`, '');
+const pr = tov.pricing;
+out.push('', '## 2. Щомісячно: ТОВ', '', `**${tov.name}** — ${tov.description}`, '', `_${pr.baseNote} ${tov.vat}_`, '');
+out.push('| Базова ставка (з 1 директором) | без ПДВ | з ПДВ |', '|---|---:|---:|');
+out.push(`| Спрощена система | ${fmt(pr.base.simplified_noVat)} | ${fmt(pr.base.simplified_vat)} |`);
+out.push(`| Загальна система | ${fmt(pr.base.general_noVat)} | ${fmt(pr.base.general_vat)} |`);
+out.push('', '**Коефіцієнти до бази (множаться):** виробництво ×1,3 · роздріб/маркетплейси з ПРРО ×1,3 · ЗЕД ×1,5.');
+out.push(`Не беремо: ${pr.notAccepted.join('; ')}.`);
+if (pr.contractExample?.todo) out.push('', `**TODO:** ${pr.contractExample.todo}`);
+out.push('', '**Доплати за показниками місяця:**', '', '| Показник | Обсяг | Ціна |', '|---|---|---:|');
+for (const a of Object.values(tov.addons)) {
+  if (a.tiers) for (const t of a.tiers) out.push(`| ${a.label} | ${t.label ?? `до ${t.upTo}`} | ${t.price === 'TODO' ? '**TODO**' : fmt(t.price)} |`);
+  if (a.perUnit) out.push(`| ${a.label} | за 1 шт. | ${fmt(a.perUnit)} |`);
+  if (a.price) out.push(`| ${a.label} | ${a.unit} | ${fmt(a.price)} |`);
+}
 
 for (const [seg, title] of [['fop', 'ФОП'], ['tov', 'ТОВ']]) {
   out.push('', `## ${seg === 'fop' ? 3 : 4}. Разові та додаткові послуги: ${title}`, '');
