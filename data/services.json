@@ -1621,6 +1621,10 @@
     "phonesConfirmed": true,
     "email": "info@outsistent.com.ua",
     "hours": "Пн–Пт 9:00–18:00",
-    "telegram": "TODO: t.me/outsistentZP чи за номером 099"
+    "telegram": {
+      "handle": "@karina_outsistent",
+      "url": "https://t.me/karina_outsistent",
+      "note": "Telegram-канал власниці — головне посилання на сайті."
+    }
   }
 }
